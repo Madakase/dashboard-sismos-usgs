@@ -47,4 +47,4 @@ def csv_a_json(ruta_csv, ruta_json):
 
 
 if __name__ == '__main__':
-    csv_a_json('sismos_ultimo_mes.csv', 'sismos.json')
+    csv_a_json('data/all_month.csv', 'data/sismos.json')
