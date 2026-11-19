@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 
-RUTA_JSON = 'sismos.json'
+RUTA_JSON = 'data/sismos.json'
 CLAVES_ESPERADAS = {
     'fecha_hora', 'latitud', 'longitud', 'profundidad', 'magnitud',
     'tipo_magnitud', 'red', 'id', 'lugar', 'tipo', 'estado'
