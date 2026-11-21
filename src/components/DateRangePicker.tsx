@@ -7,14 +7,7 @@ interface DateRangePickerProps {
   onChange: (fechaInicio: string, fechaFin: string) => void;
 }
 
-function DateRangePicker({
-  etiqueta,
-  fechaInicio,
-  fechaFin,
-  fechaMin,
-  fechaMax,
-  onChange,
-}: DateRangePickerProps) {
+function DateRangePicker({ etiqueta, fechaInicio, fechaFin, fechaMin, fechaMax, onChange,}: DateRangePickerProps) {
   return (
     <div>
       <label>{etiqueta}</label>
