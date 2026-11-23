@@ -21,3 +21,5 @@ function KpiSection({ indicadores }: KpiSectionProps) {
     </section>
   );
 }
+
+export default KpiSection;
