@@ -150,3 +150,92 @@ const SISMOS_EJEMPLO: Sismo[] = [
     status: "reviewed",
   },
 ];
+
+function Dashboard() {
+  const [filtros, setFiltros] = useState<Filtros>(FILTROS_INICIALES);
+
+  const sismosFiltrados = useMemo(() => {
+    return SISMOS_EJEMPLO.filter((sismo) => {
+      const dentroMagnitud = sismo.mag >= filtros.magMin && sismo.mag <= filtros.magMax;
+      const fechaDia = sismo.time.slice(0, 10);
+      const dentroFecha =
+        (!filtros.fechaInicio || fechaDia >= filtros.fechaInicio) &&
+        (!filtros.fechaFin || fechaDia <= filtros.fechaFin);
+      const dentroEstado = filtros.estado === "todos" || sismo.status === filtros.estado;
+
+      return dentroMagnitud && dentroFecha && dentroEstado;
+    });
+  }, [filtros]);
+
+  const indicadoresDinamicos: Indicador[] = useMemo(() => {
+    const total = sismosFiltrados.length;
+    const promedioMag =
+      total > 0
+        ? (sismosFiltrados.reduce((acc, s) => acc + s.mag, 0) / total).toFixed(2)
+        : "0.00";
+    const maxMag =
+      total > 0 ? Math.max(...sismosFiltrados.map((s) => s.mag)).toFixed(1) : "0.0";
+    const promedioProf =
+      total > 0
+        ? (sismosFiltrados.reduce((acc, s) => acc + s.depth, 0) / total).toFixed(1)
+        : "0.0";
+
+    return [
+      {
+        ...INDICADORES_EJEMPLO[0],
+        valor: total,
+        descripcion: "Eventos en el periodo filtrado",
+      },
+      {
+        ...INDICADORES_EJEMPLO[1],
+        valor: promedioMag,
+      },
+      {
+        ...INDICADORES_EJEMPLO[2],
+        valor: maxMag,
+      },
+      {
+        ...INDICADORES_EJEMPLO[3],
+        valor: promedioProf,
+      },
+    ];
+  }, [sismosFiltrados]);
+
+  return (
+    <Box sx={{ minHeight: "100vh", bgcolor: "#f5f7fa", py: 3 }}>
+      <Container maxWidth="xl">
+        <Stack spacing={3}>
+          <Header titulo="Sistema de monitoreo sísmico global" />
+
+          <FilterBar
+            filtros={filtros}
+            fechaMin={FECHA_MIN}
+            fechaMax={FECHA_MAX}
+            onFiltrosChange={setFiltros}
+          />
+
+          <KpiSection indicadores={indicadoresDinamicos} />
+
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12 }}>
+              <ChartsSection
+                datosDiarios={DATOS_DIARIOS_EJEMPLO}
+                datosRegiones={DATOS_REGIONES_EJEMPLO}
+                datosMagnitudes={DATOS_MAGNITUDES_EJEMPLO}
+                datosRedes={DATOS_REDES_EJEMPLO}
+              />
+            </Grid>
+          </Grid>
+
+          <DataTable
+            columnas={COLUMNAS_TABLA}
+            filas={sismosFiltrados}
+            registrosPorPagina={10}
+          />
+        </Stack>
+      </Container>
+    </Box>
+  );
+}
+
+export default Dashboard;
