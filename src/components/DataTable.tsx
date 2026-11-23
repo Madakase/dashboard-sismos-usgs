@@ -98,7 +98,7 @@ function DataTable({ columnas, filas, registrosPorPagina }: DataTableProps) {
               </TableRow>
             ) : (
               filasVisibles.map((sismo, idx) => (
-                <TableRow key={sismo.id ?? `${sismo.time}-${indiceInicio + idx}`} hover>
+                <TableRow key={`${sismo.time}-${sismo.place}-${indiceInicio + idx}`} hover>
                   {columnas.map((col) => (
                     <TableCell key={col.clave} sx={{ whiteSpace: "nowrap" }}>
                       {renderizarCelda(sismo, col.clave)}
