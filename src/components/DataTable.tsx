@@ -73,7 +73,7 @@ function DataTable({ columnas, filas, registrosPorPagina }: DataTableProps) {
   };
 
   return (
-    <Paper component="section" sx={{ p: 2 }}>
+    <Paper component="section" sx={{ p: { xs: 1.5, md: 2 } }}>
       <Typography variant="h6" gutterBottom>
         Detalle de registro
       </Typography>
@@ -115,8 +115,10 @@ function DataTable({ columnas, filas, registrosPorPagina }: DataTableProps) {
         sx={{
           mt: 2,
           display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
-          alignItems: { xs: "flex-start", sm: "center" },
+          // Móvil: la paginación queda debajo del contador.
+          // Escritorio: contador a la izquierda y paginación a la derecha, en la misma fila.
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: { xs: "flex-start", md: "center" },
           justifyContent: "space-between",
           gap: 1.5,
         }}
