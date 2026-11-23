@@ -9,3 +9,15 @@ interface DataTableProps {
   filas: Sismo[];
   registrosPorPagina: number;
 }
+
+function obtenerVarianteMagnitud(mag: number): VarianteBubble {
+  if (mag >= 5) return "alto";
+  if (mag >= 3) return "medio";
+  return "normal";
+}
+
+function obtenerVarianteEstado(estado: string): VarianteBubble {
+  const normalizado = estado.toLowerCase();
+  if (normalizado === "reviewed" || normalizado === "revisado") return "medio";
+  return "normal";
+}
