@@ -1,4 +1,4 @@
-import type { Filtros, OpcionSelect } from "../types/types";
+import type { Filtros } from "../types/types";
 import RangeSlider from "./RangeSlider";
 import DateRangePicker from "./DateRangePicker";
 import SelectFilter from "./SelectFilter";
