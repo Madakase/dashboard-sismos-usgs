@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 import { Alert, Box, CircularProgress, Container, Grid, Stack } from "@mui/material";
 import type { ColumnaTabla, Filtros, Indicador, Sismo } from "./types/types";
-import { useFetchData } from "./hooks/useFetchData";
+import useFetchData from "./hooks/useFetchData";
 import {
   contarPorDia,
   contarPorRed,
