@@ -51,4 +51,18 @@ export interface Sismo {
   status: string;
 }
 
+export interface SismoFirebase {
+  id: string;
+  fecha_hora: string;
+  latitud?: number;
+  longitud?: number;
+  profundidad?: number;
+  magnitud?: number;
+  tipo_magnitud?: string;
+  red?: string;
+  lugar?: string;
+  tipo: string;
+  estado?: string;
+}
+
 export type VarianteBubble = "normal" | "medio" | "alto" | "estado";
