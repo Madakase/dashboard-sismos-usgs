@@ -15,7 +15,7 @@ function aSismo(r: SismoFirebase): Sismo | null {
   };
 }
 
-export async function obtenerSismos(coleccion: string): Promise<Sismo[]> {
+export async function obtenerSismos(): Promise<Sismo[]> {
   const snapshot = await get(ref(database));
 
   if (!snapshot.exists()) return [];

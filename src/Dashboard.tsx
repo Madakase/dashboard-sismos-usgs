@@ -138,7 +138,7 @@ function DashboardContenido({ sismos }: { sismos: Sismo[] }) {
 }
 
 function Dashboard() {
-  const { sismos, cargando, error } = useFetchData("sismos");
+  const { sismos, cargando, error } = useFetchData();
 
   if (cargando) {
     return (
