@@ -3,12 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "<API_KEY>",
-  authDomain: "<ID-del-proyecto>.firebaseapp.com",
-  projectId: "<ID-del-proyecto>",
-  storageBucket: "<ID-del-proyecto>.firebasestorage.app",
-  messagingSenderId: "<SENDER_ID>",
-  appId: "<APP_ID>"
+  apiKey: "AIzaSyCdJPezGTe-bybxOV56r-OdZc__PxY6mGc",
+  authDomain: "data-repository-31315.firebaseapp.com",
+  databaseURL: "https://data-repository-31315-default-rtdb.firebaseio.com",
+  projectId: "data-repository-31315",
+  storageBucket: "data-repository-31315.firebasestorage.app",
+  messagingSenderId: "224938749286",
+  appId: "1:224938749286:web:022bf9196cd28c42cdeca7"
 };
 
 const app = initializeApp(firebaseConfig);
